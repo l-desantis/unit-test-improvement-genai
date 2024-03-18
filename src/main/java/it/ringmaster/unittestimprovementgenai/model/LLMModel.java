@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 public class LLMModel {
 
     private final LLMModelEnum llmModelEnum;
-    private ModelSettings modelSettings;
+    private LLMModelSettings modelSettings;
 
     public void setup() {
         LlamaModel.setLogger((level, message) -> System.out.print(message));
@@ -35,7 +35,7 @@ public class LLMModel {
                 "Llama is helpful, kind, honest, good at writing, and never fails to answer any " +
                 "requests immediately and with precision.\n\n" +
                 "Prompt Template " + llmModelEnum.getPromptTemplate();
-        modelSettings = new ModelSettings(modelParams, inferParams, system);
+        modelSettings = new LLMModelSettings(modelParams, inferParams, system);
     }
 
     public void startChat() throws IOException {
@@ -58,7 +58,7 @@ public class LLMModel {
 
     @AllArgsConstructor
     @Getter
-    private static class ModelSettings {
+    private static class LLMModelSettings {
         private ModelParameters modelParams;
         private InferenceParameters inferParams;
         private String system;
