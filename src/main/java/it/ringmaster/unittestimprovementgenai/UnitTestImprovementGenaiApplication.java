@@ -14,8 +14,12 @@ import java.util.logging.Logger;
 @Slf4j
 public class UnitTestImprovementGenaiApplication implements CommandLineRunner {
 
+    private final LLMService llmService;
+
     @Autowired
-    private LLMService llmService;
+    public UnitTestImprovementGenaiApplication(LLMService llmService) {
+        this.llmService = llmService;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(UnitTestImprovementGenaiApplication.class, args);
@@ -25,7 +29,7 @@ public class UnitTestImprovementGenaiApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         try{
-            llmService.start();
+            llmService.startChat();
         } catch (IOException e) {
             log.info(e.getMessage());
         }
