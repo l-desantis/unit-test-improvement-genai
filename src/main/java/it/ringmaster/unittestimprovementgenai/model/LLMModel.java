@@ -24,13 +24,16 @@ public class LLMModel {
     public void setup() {
         LlamaModel.setLogger((level, message) -> System.out.print(message));
         ModelParameters modelParams = new ModelParameters()
-                .setNGpuLayers(43);
+                .setNGpuLayers(43)
+
+                .setNCtx(4096);
 
         InferenceParameters inferParams = new InferenceParameters()
                 .setTemperature(0.7f)
                 .setPenalizeNl(true)
 //                .setNProbs(10)
                 .setMirostat(InferenceParameters.MiroStat.V2)
+
                 .setAntiPrompt("User:");
 
         String system = "This is a conversation between User and Llama, a friendly Code Helper.\n" +

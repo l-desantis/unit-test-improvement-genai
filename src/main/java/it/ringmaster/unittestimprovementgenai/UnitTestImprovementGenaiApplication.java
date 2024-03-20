@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
+
 @SpringBootApplication
 @Slf4j
 public class UnitTestImprovementGenaiApplication implements CommandLineRunner {
@@ -26,13 +28,14 @@ public class UnitTestImprovementGenaiApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        try{
-//            llmService.startChat();
-//        } catch (IOException e) {
-//            log.info(e.getMessage());
-//        }
 
-        String inputTestClass = FileManager.readFile("files/MyClassTest.java");
+       /* try{
+            llmService.startChat();
+        } catch (IOException e) {
+            log.info(e.getMessage());
+        }*/
+
+        String inputTestClass = FileManager.readFile("files/UserTest.java");
         String result = llmService.generate(inputTestClass);
         log.info(result);
     }
