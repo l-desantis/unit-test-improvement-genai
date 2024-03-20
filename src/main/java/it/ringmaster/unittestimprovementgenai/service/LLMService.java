@@ -22,7 +22,7 @@ public class LLMService {
         model.startChat();
     }
 
-    public String generate(String prompt) {
+    public String generate(String prompt) throws IOException {
         log.info("Providing the prompt to the model");
         return model.generate(prompt);
     }
