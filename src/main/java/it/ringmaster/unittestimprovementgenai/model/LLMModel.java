@@ -7,6 +7,7 @@ import it.ringmaster.unittestimprovementgenai.enums.LLMModelEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 @RequiredArgsConstructor
+@Slf4j
 public class LLMModel {
 
     private final LLMModelEnum llmModelEnum;
@@ -54,6 +56,19 @@ public class LLMModel {
                 }
             }
         }
+    }
+
+    public String generate(String prompt) {
+        log.info(String.format("Prompt template: \n %s",llmModelEnum.getPromptTemplate()));
+        StringBuilder result = new StringBuilder();
+        try (LlamaModel model = new LlamaModel(llmModelEnum.getPath(), modelSettings.getModelParams())) {
+            prompt = String.format(llmModelEnum.getPromptTemplate(), prompt);
+            for (LlamaModel.Output output : model.generate(prompt, modelSettings.getInferParams())) {
+                System.out.print(output);
+                result.append(output);
+            }
+        }
+        return result.toString();
     }
 
     @AllArgsConstructor

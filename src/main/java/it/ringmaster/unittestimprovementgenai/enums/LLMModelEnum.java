@@ -7,8 +7,7 @@ import lombok.Getter;
 @Getter
 public enum LLMModelEnum {
     CODE_LLAMA_7B("models/codellama-7b-instruct.Q5_K_M.gguf",
-            "[INST] You are an expert programmer that helps write unit tests. " +
-            "Don't explain anything just write the tests. Please wrap your code answer using ```:\\n{%s}\\n[/INST]"),
+            "[INST] You are an expert Java programmer that helps to improve unit test coverage, " + "I will provide the Java test class wrapped with \\{\\}. Don't explain anything just write " + "the code, improve the Java test class as much as possible and write the code. Please wrap your code answer using ```:\\n{%s}\\n[/INST]"),
 
     LLAMA2_7B("models/llama-2-7b-chat.Q2_K.gguf",
             "[INST] <<SYS>>\n" +
