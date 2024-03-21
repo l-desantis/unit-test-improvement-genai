@@ -12,6 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.sql.Time;
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @Slf4j
@@ -37,10 +40,12 @@ public class UnitTestImprovementGenaiApplication implements CommandLineRunner {
         } catch (IOException e) {
             log.info(e.getMessage());
         }*/
-
+        Long t1= System.currentTimeMillis();
         String inputTestClass = FileManager.loadFromFile(Path.of("files/UserTest.java"));
         String inputClass = FileManager.loadFromFile(Path.of("files/UserController.java"));
         String result = llmService.generate(inputClass,inputTestClass);
         log.info(result);
+        Long t2= System.currentTimeMillis();
+        System.out.println(TimeUnit.MILLISECONDS.toMinutes(t2-t1));
     }
 }

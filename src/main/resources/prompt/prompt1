@@ -1,4 +1,5 @@
-[INST] You are an expert Java programmer that helps to improve unit test coverage, I will provide the Java class and the relative Java test class to improve
+[INST] You are an expert Java programmer that helps to improve unit test coverage, I will provide the Java class and the relative Java test class.
+your job is to add test for methode not tested yet
 wrapped with {} the first is the class and the second is the test,
 improve the Java test class as much as possible and write.
 Don't explain anything just write the code,
