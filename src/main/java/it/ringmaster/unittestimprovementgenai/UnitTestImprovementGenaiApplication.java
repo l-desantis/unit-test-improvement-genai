@@ -38,8 +38,9 @@ public class UnitTestImprovementGenaiApplication implements CommandLineRunner {
             log.info(e.getMessage());
         }*/
 
-        String inputTestClass = FileManager.readFile("files/UserTest.java");
-        String result = llmService.generate(inputTestClass);
+        String inputTestClass = FileManager.loadFromFile(Path.of("files/UserTest.java"));
+        String inputClass = FileManager.loadFromFile(Path.of("files/UserController.java"));
+        String result = llmService.generate(inputClass,inputTestClass);
         log.info(result);
     }
 }

@@ -1,3 +1,5 @@
-[INST] You are an expert Java programmer that helps to improve unit test coverage, I will provide the Java test class
-wrapped with {}. Don't explain anything just write the code, improve the Java test class as much as possible and write
-the code. Please wrap your code answer using ```:\n{%s}\n[/INST]
+[INST] You are an expert Java programmer that helps to improve unit test coverage, I will provide the Java class and the relative Java test class to improve
+wrapped with {} the first is the class and the second is the test,
+improve the Java test class as much as possible and write.
+Don't explain anything just write the code,
+Please wrap your code answer using ```:\n{%s}{%s}\n[/INST]

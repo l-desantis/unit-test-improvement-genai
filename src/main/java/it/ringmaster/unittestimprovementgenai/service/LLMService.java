@@ -22,8 +22,8 @@ public class LLMService {
         model.startChat();
     }
 
-    public String generate(String prompt) throws IOException {
+    public String generate(String prompt,String prompt2) throws IOException {
         log.info("Providing the prompt to the model");
-        return model.generate(prompt);
+        return model.generate(prompt,prompt2);
     }
 }
