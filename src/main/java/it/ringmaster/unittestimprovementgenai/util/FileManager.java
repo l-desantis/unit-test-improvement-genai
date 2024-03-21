@@ -1,18 +1,12 @@
 package it.ringmaster.unittestimprovementgenai.util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FileManager {
-    public static String readFile(String fileName) throws FileNotFoundException {
-        File file = new File(fileName);
-        Scanner sc = new Scanner(file);
-
-        StringBuilder result = new StringBuilder();
-        while (sc.hasNextLine()) {
-            result.append(sc.nextLine());
-        }
-        return result.toString();
+    public static String loadFromFile(Path filePath) throws IOException {
+        return new String(Files.readAllBytes(filePath));
     }
 }
