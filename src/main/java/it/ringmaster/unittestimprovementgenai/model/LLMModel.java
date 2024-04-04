@@ -25,7 +25,7 @@ public class LLMModel {
     public void setup() {
         LlamaModel.setLogger((level, message) -> System.out.print(message));
         ModelParameters modelParams = new ModelParameters()
-                .setNGpuLayers(43);
+                .setNGpuLayers(43).setNCtx(4096);
 
         InferenceParameters inferParams = new InferenceParameters()
                 .setTemperature(0.7f)
@@ -62,15 +62,17 @@ public class LLMModel {
         }
     }
 
-    public String generate(String prompt) throws IOException {
+    public String generate(String prompt, boolean showsOutput) throws IOException {
         String promptTemplate = FileManager.loadFromFile(llmModelEnum.getPromptTemplatePath());
-        log.info(String.format("Prompt template: \n %s", promptTemplate));
+        log.debug(String.format("Prompt template: \n %s", promptTemplate));
 
         StringBuilder result = new StringBuilder();
         try (LlamaModel model = new LlamaModel(llmModelEnum.getPath().toString(), modelSettings.getModelParams())) {
             prompt = String.format(promptTemplate, prompt);
             for (LlamaModel.Output output : model.generate(prompt, modelSettings.getInferParams())) {
-                System.out.print(output);
+                if (showsOutput) {
+                    System.out.print(output);
+                }
                 result.append(output);
             }
         }

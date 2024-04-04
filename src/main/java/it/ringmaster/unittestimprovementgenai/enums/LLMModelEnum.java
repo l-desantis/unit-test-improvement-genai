@@ -9,7 +9,7 @@ import java.nio.file.Path;
 @Getter
 public enum LLMModelEnum {
     CODE_LLAMA_7B(
-            Path.of("models/codellama-7b-instruct.Q5_K_M.gguf"),
+            Path.of("models/codellama-7b-instruct.Q6_K.gguf"),
             Path.of("src/main/resources/prompt/prompt1")
             ),
 
